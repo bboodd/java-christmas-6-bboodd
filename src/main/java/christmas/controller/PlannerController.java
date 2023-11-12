@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.Date;
+import christmas.domain.Order;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -12,5 +13,6 @@ public class PlannerController {
     public void start(){
         outputView.printIntro();
         Date date = inputView.readDate();
+        Order order = inputView.readOrder();
     }
 }

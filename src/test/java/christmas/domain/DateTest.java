@@ -9,7 +9,7 @@ class DateTest {
 
     @DisplayName("날짜가 31일을 넘어가면 예외가 발생한다.")
     @Test
-    void createDateOverRange(){
+    void createDateByOverRange(){
         assertThatThrownBy(() -> new Date(32))
                 .isInstanceOf(IllegalArgumentException.class);
     }

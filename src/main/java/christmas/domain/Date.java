@@ -12,9 +12,9 @@ public class Date {
 
     private void validateRange(int date){
         if(date<1 || date>31){
-            throw new IllegalArgumentException(Error.DATE_RANGE_ERROR.message());
+            throw new IllegalArgumentException(Error.DATE_ERROR.message());
         }
     }
 
-    //boolean 타입 디데이, 평일, 주말, 특별 날짜 체크 함수
+    //boolean? int? 타입 디데이, 평일, 주말, 특별 날짜 체크 함수
 }
