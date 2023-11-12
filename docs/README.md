@@ -205,9 +205,26 @@ fix: 로직을 수정할때 사용합니다.
 ## 패키지 구조와 각 클래스의 역할
 
 controller
+```
+PlannerController - 도메인과 뷰를 연결해서 플래너 진행
+```
 
 domain
+```
+Date - 입력한 날짜를 저장 및 가공
+Menu - 하나의 주문에 대한 정보를 저장 및 가공
+Order - 주문한 Menu 리스트 저장 및 가공
+```
 
 util
+```
+Error - 에러 메시지 enum
+InputValidate - 입력에 대한 검증
+MenuList - 메뉴 정보 enum
+```
 
 view
+```
+InputView - 입력 처리
+OutputView - 출력 처리
+```
