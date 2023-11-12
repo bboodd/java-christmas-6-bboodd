@@ -12,9 +12,10 @@ import java.util.List;
 
 public class InputView {
     private static final InputValidate inputValidate = new InputValidate();
+    private static final OutputView outputView = new OutputView();
     public static Date readDate() {
         try {
-            System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
+            outputView.printReadDate();
             String input = Console.readLine();
             inputValidate.validateBlank(input);
             inputValidate.validateIsDigit(input);
@@ -40,7 +41,7 @@ public class InputView {
 
     public static Order readOrder(){
         try {
-            System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
+            outputView.printReadOrder();
             String input = Console.readLine();
             List<Menu> order = new ArrayList<>();
             for(String inputComma : input.split(",")){
