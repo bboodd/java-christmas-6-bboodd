@@ -1,6 +1,8 @@
 package christmas.domain;
 
+import christmas.util.Discount;
 import christmas.util.Error;
+import christmas.util.MenuList;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -56,4 +58,27 @@ public class Order {
             throw new IllegalArgumentException(Error.MENU_DRINK_ERROR.message());
         }
     }
+
+    public int totalPrice(){
+        int totalPrice = 0;
+        for(Menu menu : order){
+            totalPrice += menu.getMenuPrice();
+        }
+        return totalPrice;
+    }
+
+    public int giveaway(){ // 샴페인 증정 이벤트
+        Discount giveaway = Discount.CHAMPAGNE_GIVEAWAY;
+
+        if(totalPrice() >= giveaway.getMoney()){
+            return MenuList.CHAMPAGNE.getPrice();
+        }
+
+        return 0;
+    }
+
+    public List<Menu> getOrder(){
+        return order;
+    }
+
 }

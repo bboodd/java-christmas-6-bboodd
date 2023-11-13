@@ -3,6 +3,7 @@ package christmas.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.Or;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ class OrderTest {
         List<Menu> menus = new ArrayList<>();
         menus.add(new Menu("크리스마스파스타", 2));
         menus.add(new Menu("크리스마스파스타", 4));
+
         assertThatThrownBy(() -> new Order(menus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -39,8 +41,31 @@ class OrderTest {
         List<Menu> menus = new ArrayList<>();
         menus.add(new Menu("제로콜라", 2));
         menus.add(new Menu("샴페인", 1));
+
         assertThatThrownBy(() -> new Order(menus))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("총 주문금액을 반환후 기댓값과 일치한다면 통과한다.")
+    @Test
+    void createTotalPrice(){
+        List<Menu> menus = new ArrayList<>();
+        menus.add(new Menu("티본스테이크", 2));
+        Order order = new Order(menus);
+        int expect = 110000;
+
+        assertEquals(order.totalPrice(), expect);
+    }
+
+    @DisplayName("증정이벤트의 금액을 반환 후 기댓값과 일치한다면 통과한다.")
+    @Test
+    void createGiveaway(){
+        List<Menu> menus = new ArrayList<>();
+        menus.add(new Menu("티본스테이크", 3));
+        Order order = new Order(menus);
+        int expect = 25000;
+
+        assertEquals(order.giveaway(), expect);
     }
 
 }
