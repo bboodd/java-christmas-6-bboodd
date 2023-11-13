@@ -34,7 +34,7 @@ public class Menu {
         return menu.getName();
     }
 
-    public int getTotalPrice(){
+    public int getMenuPrice(){
         return menu.getPrice() * quantity;
     }
 
