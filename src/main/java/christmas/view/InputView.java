@@ -17,7 +17,7 @@ public class InputView {
             outputView.printReadDate();
             String input = Console.readLine();
             inputValidate.validateBlank(input);
-            inputValidate.validateIsDigit(input);
+            inputValidate.validateDateIsDigit(input);
             Date date = new Date(Integer.parseInt(input));
             return date;
         } catch (IllegalArgumentException e){
@@ -33,7 +33,7 @@ public class InputView {
 
         String quantity = menu[1];
         inputValidate.validateBlank(quantity);
-        inputValidate.validateIsDigit(quantity);
+        inputValidate.validateMenuQuantityIsDigit(quantity);
         return new Menu(name, Integer.parseInt(quantity));
 
     }

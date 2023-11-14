@@ -16,10 +16,17 @@ class InputValidateTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("입력이 숫자가 아니면 예외가 발생한다.")
+    @DisplayName("날짜 입력이 숫자가 아니면 예외가 발생한다.")
     @Test
-    void inputNotDigit(){
-        assertThatThrownBy(() -> new InputValidate().validateIsDigit("a"))
+    void inputDateByNotDigit(){
+        assertThatThrownBy(() -> new InputValidate().validateDateIsDigit("a"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("메뉴 수량 입력이 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void inputMenuQuantityByNotDigit(){
+        assertThatThrownBy(() -> new InputValidate().validateMenuQuantityIsDigit("a"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

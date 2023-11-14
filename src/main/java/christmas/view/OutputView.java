@@ -90,7 +90,7 @@ public class OutputView {
 
     public void printSpecialDiscount(int specialDiscount){
         if(specialDiscount != 0){
-            System.out.printf("특별 할인: -1,000원");
+            System.out.println("특별 할인: -1,000원");
         }
     }
 
@@ -108,6 +108,7 @@ public class OutputView {
     }
 
     public void printAfterDiscountPrice(int afterDiscountPrice){
+        System.out.println("<할인 후 예상 결제 금액>");
         System.out.printf("%s원\n", formatter.format(afterDiscountPrice));
         System.out.println();
     }
