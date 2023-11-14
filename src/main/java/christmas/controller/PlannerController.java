@@ -22,10 +22,34 @@ public class PlannerController {
         PlannerService plannerService = new PlannerService(order, date);
         outputView.printBenefitIntro();
         outputView.printOrder(order);
-        outputView.printTotalPrice(order.totalPrice());
+
+        outputView.printBeforeDiscountPrice(order.totalPrice());
+
         outputView.printGiveaway(order.giveaway());
 
+        discountList(order, date, plannerService);
+
+        benefitResult(plannerService);
+    }
+
+    private void discountList(Order order, Date date, PlannerService plannerService){
         outputView.printDiscountIntro();
-        outputView.printDDayDiscount(date.dDayDiscount());
+        if(!order.getDiscountState() || plannerService.totalDiscount() == 0){
+            outputView.printNotting();
+        }
+
+        if(order.getDiscountState()){
+            outputView.printDDayDiscount(date.dDayDiscount());
+            outputView.printWeekdayDiscount(plannerService.weekdayDiscount());
+            outputView.printWeekendDiscount(plannerService.weekendDiscount());
+            outputView.printSpecialDiscount(date.specialDay());
+            outputView.printGiveawayDiscount(order.giveaway());
+        }
+    }
+
+    private void benefitResult(PlannerService plannerService){
+        outputView.printTotalDiscount(plannerService.totalDiscount());
+        outputView.printAfterDiscountPrice(plannerService.afterDiscountPrice());
+        outputView.printBadge(plannerService.findBadge());
     }
 }

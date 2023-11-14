@@ -7,7 +7,6 @@ import christmas.util.Week;
 public class Date {
     private final int date;
     private final Week week;
-    private boolean specialDay = false;
 
 
     public Date(int date){
@@ -26,6 +25,13 @@ public class Date {
         if(date<1 || date>31){
             throw new IllegalArgumentException(Error.DATE_ERROR.message());
         }
+    }
+
+    public int specialDay(){
+        if(date == 25 || week.equals(Week.SUNDAY)){
+            return Discount.SPECIAL_DISCOUNT.getMoney();
+        }
+        return 0;
     }
 
     public int dDayDiscount(){

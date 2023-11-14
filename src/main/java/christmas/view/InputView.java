@@ -5,7 +5,6 @@ import christmas.domain.Date;
 import christmas.domain.Menu;
 import christmas.domain.Order;
 import christmas.util.InputValidate;
-import christmas.util.MenuList;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -22,6 +22,23 @@ class DateTest {
         Date date = new Date(20);
         int expect = 2900;
 
+        Date date2 = new Date(2);
+        int expect2 = 1100;
+
         assertEquals(date.dDayDiscount(), expect);
+        assertEquals(date2.dDayDiscount(), expect2);
+    }
+
+    @DisplayName("특별할인 금액을 반환후 기댓값과 일치하면 통과한다.")
+    @Test
+    void createSpecialDay(){
+        Date date = new Date(24);
+        int expect = 1000;
+
+        Date date2 = new Date(26);
+        int expect2 = 0;
+
+        assertEquals(date.specialDay(), expect);
+        assertEquals(date2.specialDay(), expect2);
     }
 }

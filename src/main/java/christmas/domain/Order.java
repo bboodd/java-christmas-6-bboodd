@@ -17,6 +17,7 @@ public class Order {
         validateOverRange(order);
         validateDuplicateMenu(order);
         validateOnlyDrink(order);
+        validateEmptyList(order);
         this.order = order;
     }
 
@@ -49,13 +50,19 @@ public class Order {
 
         for(Menu menu : order){
             String category = menu.getCategory();
-            if(category == "음료"){
+            if(category.equals("음료")){
                 categories.add(category);
             }
         }
 
         if(order.size() == categories.size()){
             throw new IllegalArgumentException(Error.MENU_DRINK_ERROR.message());
+        }
+    }
+
+    private void validateEmptyList(List<Menu> order){
+        if(order.size() == 0 || order.isEmpty()){
+            throw new IllegalArgumentException(Error.MENU_ERROR.message());
         }
     }
 
@@ -79,6 +86,35 @@ public class Order {
 
     public List<Menu> getOrder(){
         return order;
+    }
+
+    public int countDesert(){
+        int count = 0;
+        for(Menu menu : order){
+            String category = menu.getCategory();
+            if(category.equals("디저트")){
+                count += menu.getQuantity();
+            }
+        }
+        return count;
+    }
+
+    public int countMain(){
+        int count = 0;
+        for(Menu menu : order){
+            String category = menu.getCategory();
+            if(category.equals("메인")){
+                count += menu.getQuantity();
+            }
+        }
+        return count;
+    }
+
+    public boolean getDiscountState(){
+        if(totalPrice() >= Discount.MIN_DISCOUNT.getMoney()){
+            return true;
+        }
+        return false;
     }
 
 }
